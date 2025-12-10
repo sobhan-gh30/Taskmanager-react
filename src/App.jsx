@@ -7,6 +7,7 @@ import TaskCart from "./componenst/taskCarts.jsx";
 function App() {
 
     let [modalOpen, setModalOpen] = useState(false);
+    let [filter, setFilter] = useState("all");
 
     function openModal() {
         setModalOpen(true);
@@ -14,6 +15,8 @@ function App() {
     function closeModal() {
         setModalOpen(false);
     }
+
+
 
   return (
     <>
@@ -35,9 +38,7 @@ function App() {
                 <div className="mt-20 mb-2 flex items-center justify-end gap-5">
                     <select id="" className="py-1 px-3 bg-white rounded border-2">
                         <option value="all">نمایش همه</option>
-                        <option value="all">انجام نشده ها</option>
                         <option value="all">مهم ها</option>
-                        <option value="all">انجام شده ها</option>
                     </select>
 
                     <button onClick={()=>{openModal()}} className="p-2 bg-zinc-900 hover:bg-zinc-800 rounded-md text-white">
@@ -49,11 +50,25 @@ function App() {
         <main className={"container mx-auto py-2"}>
             <h2 className={"font-bold my-5"}>لیست تسک ها</h2>
             <TaskModal modalOpen={modalOpen} onClose={closeModal} />
-            <div>
+            <div className={"mb-10"}>
                 {
-                    tasks.map((task) => {
+                    tasks.filter((task) => {
+                            return task.done===false;
+                    }).map((task) => {
                         return (
-                            <TaskCart {...task} />
+                            <TaskCart {...task} key={task.id}/>
+                        )
+                    })
+                }
+            </div>
+            <h2 className={"font-bold my-5"}>تسک های انجام داده شده</h2>
+            <div className={"mb-5"}>
+                {
+                    tasks.filter((task) => {
+                        return task.done===true;
+                    }).map((task) => {
+                        return (
+                            <TaskCart {...task} key={task.id}/>
                         )
                     })
                 }
