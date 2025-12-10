@@ -16,7 +16,9 @@ function App() {
         setModalOpen(false);
     }
 
-
+    function addFilter(filter) {
+        setFilter(filter);
+    }
 
   return (
     <>
@@ -36,9 +38,9 @@ function App() {
                     </span>
                 </p>
                 <div className="mt-20 mb-2 flex items-center justify-end gap-5">
-                    <select id="" className="py-1 px-3 bg-white rounded border-2">
+                    <select onChange={()=>{addFilter(document.getElementById("selectFilter").value)}} id="selectFilter" className="py-1 px-3 bg-white rounded border-2">
                         <option value="all">نمایش همه</option>
-                        <option value="all">مهم ها</option>
+                        <option value="important">مهم ها</option>
                     </select>
 
                     <button onClick={()=>{openModal()}} className="p-2 bg-zinc-900 hover:bg-zinc-800 rounded-md text-white">
@@ -53,7 +55,11 @@ function App() {
             <div className={"mb-10"}>
                 {
                     tasks.filter((task) => {
-                            return task.done===false;
+                        if (filter === "important") {
+                            return task.important && !task.done;
+                        } else {
+                            return !task.done;
+                        }
                     }).map((task) => {
                         return (
                             <TaskCart {...task} key={task.id}/>
