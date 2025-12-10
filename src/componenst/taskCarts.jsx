@@ -26,10 +26,14 @@ export default function TaskCart({ title, description, important, done }) {
                 </div>
 
                 {/* دکمه‌ها */}
-                <div className="flex justify-center gap-4">
-                    <button className="text-xl">✅</button>
-                    <button className="text-xl">❌</button>
-                </div>
+                {
+                    !done && (
+                        <div className="flex justify-center gap-4">
+                            <button className="text-xl cursor-pointer ">✅</button>
+                            <button className="text-xl cursor-pointer ">❌</button>
+                        </div>
+                    )
+                }
             </div>
         </div>
     );

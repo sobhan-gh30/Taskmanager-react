@@ -1,5 +1,11 @@
-export default function TaskModal({modalOpen , onClose}) {
+export default function TaskModal({modalOpen , onClose , addTask}) {
+    function newTask() {
+        let taskTitle = document.getElementById("taskTitle").value;
+        let taskDescription = document.getElementById("taskDescription").value;
+        let isImportant = document.getElementById("important").checked;
 
+        addTask(taskTitle, taskDescription, isImportant);
+    }
     return (
         <div className={`fixed inset-0 backdrop-blur-sm items-center justify-center z-50 ${modalOpen?"flex":"hidden"}`}>
             <div className="bg-white border border-zinc-200 rounded-xl shadow-lg w-[30rem] p-10 relative">
@@ -19,8 +25,8 @@ export default function TaskModal({modalOpen , onClose}) {
                 </div>
 
 
-                <input type="text" placeholder="تایتل تسک خود را وارد کنید" className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-zinc-700 mb-4"/>
-                <textarea placeholder="توضیحات تسک خود را وارد کنید" className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-zinc-700 mb-4"/>
+                <input id={"taskTitle"} type="text" placeholder="تایتل تسک خود را وارد کنید" className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-zinc-700 mb-4"/>
+                <textarea id="taskDescription" placeholder="توضیحات تسک خود را وارد کنید" className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-zinc-700 mb-4"/>
 
 
                 <div className="flex items-center mb-4">
@@ -29,7 +35,7 @@ export default function TaskModal({modalOpen , onClose}) {
                 </div>
 
 
-                <button className="w-full bg-zinc-800 hover:bg-zinc-900 text-white font-semibold py-2 px-4 rounded-md transition-colors">
+                <button onClick={newTask} className="w-full bg-zinc-800 hover:bg-zinc-900 text-white font-semibold py-2 px-4 rounded-md transition-colors">
                     اضافه کن
                 </button>
             </div>
