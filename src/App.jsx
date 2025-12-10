@@ -1,7 +1,18 @@
 import Navbar from "./componenst/navbar.jsx";
 import TaskModal from "./componenst/taskModal.jsx";
+import {useState} from "react";
 
 function App() {
+
+    let [modalOpen, setModalOpen] = useState(false);
+
+    function openModal() {
+        setModalOpen(true);
+    }
+    function closeModal() {
+        setModalOpen(false);
+    }
+
   return (
     <>
         <header className="container mx-auto border-b-3 border-gray-200">
@@ -27,14 +38,14 @@ function App() {
                         <option value="all">انجام شده ها</option>
                     </select>
 
-                    <button className="p-2 bg-zinc-900 hover:bg-zinc-800 rounded-md text-white">
+                    <button onClick={()=>{openModal()}} className="p-2 bg-zinc-900 hover:bg-zinc-800 rounded-md text-white">
                         ایجاد تسک جدید +
                     </button>
                 </div>
             </div>
         </header>
         <main>
-            <TaskModal/>
+            <TaskModal modalOpen={modalOpen} onClose={closeModal} />
         </main>
     </>
   )

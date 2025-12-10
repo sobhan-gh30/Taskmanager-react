@@ -2,28 +2,28 @@
 
 @font-face {
     font-family: 'Vazir';
-    src: url('./fonts/Vazir-Regular.woff') format('woff');
+    src: url('../fonts/Vazir-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Vazir';
-    src: url('./fonts/Vazir-Light.woff') format('woff');
+    src: url('../fonts/Vazir-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Vazir';
-    src: url('./fonts/Vazir-Medium.woff') format('woff');
+    src: url('../fonts/Vazir-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Vazir';
-    src: url('./fonts/Vazir-Black.woff') format('woff');
+    src: url('../fonts/Vazir-Black.woff') format('woff');
     font-weight: 900;
     font-style: normal;
 }
