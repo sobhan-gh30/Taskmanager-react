@@ -1,7 +1,7 @@
 export default function Navbar() {
     return (
 
-        <nav className="bg-neutral-primary w-full z-20 top-0 start-0 border-b border-default">
+        <nav className="bg-neutral-primary w-full z-20">
             <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="https://github.com/sobhan-gh30" target={"_blank"}
                    className="flex items-center justify-center md:justify-start">
