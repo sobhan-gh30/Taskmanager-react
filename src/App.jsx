@@ -1,6 +1,8 @@
 import Navbar from "./componenst/navbar.jsx";
 import TaskModal from "./componenst/taskModal.jsx";
 import {useState} from "react";
+import tasks from "./tasks.js";
+import TaskCart from "./componenst/taskCarts.jsx";
 
 function App() {
 
@@ -44,8 +46,18 @@ function App() {
                 </div>
             </div>
         </header>
-        <main>
+        <main className={"container mx-auto py-2"}>
+            <h2 className={"font-bold my-5"}>لیست تسک ها</h2>
             <TaskModal modalOpen={modalOpen} onClose={closeModal} />
+            <div>
+                {
+                    tasks.map((task) => {
+                        return (
+                            <TaskCart {...task} />
+                        )
+                    })
+                }
+            </div>
         </main>
     </>
   )

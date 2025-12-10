@@ -19,7 +19,8 @@ export default function TaskModal({modalOpen , onClose}) {
                 </div>
 
 
-                <input type="text" placeholder="تسک خود را وارد کنید" className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-zinc-700 mb-4"/>
+                <input type="text" placeholder="تایتل تسک خود را وارد کنید" className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-zinc-700 mb-4"/>
+                <textarea placeholder="توضیحات تسک خود را وارد کنید" className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-zinc-700 mb-4"/>
 
 
                 <div className="flex items-center mb-4">
