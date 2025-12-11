@@ -65,7 +65,11 @@ function App() {
             return prev.filter(item => item.id !== taskId);
         });
     }
-
+    function taskDone(taskId) {
+        setTasks((perv)=>{
+            return perv.map(item => {return  item.id === taskId ? {...item , done: true } : item; });
+        });
+    }
         return (
             <>
                 <header className="container mx-auto border-b-3 border-gray-200">
@@ -112,7 +116,7 @@ function App() {
                                 }
                             }).map((task) => {
                                 return (
-                                    <TaskCart onRemove={removeTask} {...task} key={task.id}/>
+                                    <TaskCart taskDone={taskDone} onRemove={removeTask} {...task} key={task.id}/>
                                 )
                             })
                         }
