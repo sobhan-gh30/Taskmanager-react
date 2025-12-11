@@ -1,4 +1,4 @@
-export default function TaskCart({ title, description, important, done }) {
+export default function TaskCart({id,title, description, important, done,onRemove }) {
     return (
         <div className="w-full h-fit mb-5 min-h-26 border border-zinc-200 rounded shadow-md flex flex-col md:flex-row p-4 gap-4">
 
@@ -30,7 +30,7 @@ export default function TaskCart({ title, description, important, done }) {
                     !done && (
                         <div className="flex justify-center gap-4">
                             <button className="text-xl cursor-pointer ">✅</button>
-                            <button className="text-xl cursor-pointer ">❌</button>
+                            <button className="text-xl cursor-pointer" onClick={()=>{onRemove(id)}}>❌</button>
                         </div>
                     )
                 }
