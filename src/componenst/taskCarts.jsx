@@ -3,7 +3,11 @@ import {useEffect} from "react";
 export default function TaskCart({id,title, description, important, done, onRemove, taskDone }) {
 
     useEffect(() => {
-        console.log(`Task Cart: ${title}`);
+        console.log(`Task Cart Mount: ${title}`);
+
+        return () => {
+            console.log(`Task Cart UnMount: ${title}`);
+        }
     }, []);
 
     return (

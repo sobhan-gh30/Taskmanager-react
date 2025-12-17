@@ -16,6 +16,11 @@ function App() {
         }
     },[])
 
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks]);
+
+
     function openModal() {
         setModalOpen(true);
     }
@@ -28,7 +33,6 @@ function App() {
     function addTask(newTitle, newDescription, isImportant) {
         let newTask = { id: crypto.randomUUID() , title: newTitle, description: newDescription, done: false, important: isImportant }
         setTasks([...tasks,  newTask]);
-        localStorage.setItem("tasks" ,JSON.stringify([...tasks,  newTask]))
     }
     function removeTask(taskId) {
         setTasks(prev => {
