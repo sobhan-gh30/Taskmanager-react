@@ -1,7 +1,7 @@
-import Navbar from "./componenst/navbar.jsx";
-import TaskModal from "./componenst/taskModal.jsx";
+import Navbar from "./components/navbar.jsx";
+import TaskModal from "./components/taskModal.jsx";
+import TaskCard from "./components/taskCard.jsx";
 import {useEffect, useState} from "react";
-import TaskCart from "./componenst/taskCarts.jsx";
 
 function App() {
 
@@ -97,7 +97,7 @@ function App() {
                                 }
                             }).map((task) => {
                                 return (
-                                    <TaskCart taskDone={taskDone} onRemove={removeTask} {...task} key={task.id}/>
+                                    <TaskCard taskDone={taskDone} onRemove={removeTask} {...task} key={task.id}/>
                                 )
                             })
                         }
@@ -109,7 +109,7 @@ function App() {
                                 return task.done === true;
                             }).map((task) => {
                                 return (
-                                    <TaskCart {...task} key={task.id}/>
+                                    <TaskCard {...task} key={task.id}/>
                                 )
                             })
                         }

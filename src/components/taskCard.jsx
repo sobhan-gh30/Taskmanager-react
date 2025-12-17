@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 
-export default function TaskCart({id,title, description, important, done, onRemove, taskDone }) {
+export default function TaskCard({id,title, description, important, done, onRemove, taskDone }) {
 
     useEffect(() => {
         console.log(`Task Cart Mount: ${title}`);
