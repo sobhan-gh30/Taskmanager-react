@@ -1,50 +1,21 @@
 import Navbar from "./componenst/navbar.jsx";
 import TaskModal from "./componenst/taskModal.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import TaskCart from "./componenst/taskCarts.jsx";
 
 function App() {
 
-    let [tasks, setTasks] = useState([
-            {
-                "id": 1,
-                "title": "نوشتن اندپوینت API",
-                "description": "پیاده‌سازی احراز هویت کاربر همراه با رفرش توکن",
-                "important": true,
-                "done": false
-            },
-            {
-                "id": 2,
-                "title": "رفع باگ UI",
-                "description": "حل مشکل عدم جمع شدن سایدبار در حالت موبایل",
-                "important": false,
-                "done": true
-            },
-            {
-                "id": 3,
-                "title": "مهاجرت دیتابیس",
-                "description": "ایجاد جدول جدید برای ذخیره لاگ فعالیت‌ها و نوشتن اسکریپت مهاجرت",
-                "important": true,
-                "done": false
-            },
-            {
-                "id": 4,
-                "title": "به‌روزرسانی مستندات",
-                "description": "بازنویسی فایل README شامل مراحل نصب و متغیرهای محیطی",
-                "important": false,
-                "done": false
-            },
-            {
-                "id": 5,
-                "title": "بهینه‌سازی کوئری",
-                "description": "افزایش سرعت کوئری مربوط به آمار داشبورد",
-                "important": true,
-                "done": true
-            }
-        ]);
+    let [tasks, setTasks] = useState([]);
     let [modalOpen, setModalOpen] = useState(false);
     let [filter, setFilter] = useState("all");
-    console.log(tasks);
+
+    useEffect(() => {
+        const localTasks = localStorage.getItem("tasks");
+        if (localTasks) {
+            setTasks(JSON.parse(localTasks));
+        }
+    },[])
+
     function openModal() {
         setModalOpen(true);
     }
@@ -55,10 +26,9 @@ function App() {
         setFilter(filter);
     }
     function addTask(newTitle, newDescription, isImportant) {
-        setTasks(prev => [
-            ...prev,  // کپی همه آیتم‌های قبلی
-            { id: prev.length + 1, title: newTitle, description: newDescription, done: false, important: isImportant }  // آیتم جدید
-        ]);
+        let newTask = { id: crypto.randomUUID() , title: newTitle, description: newDescription, done: false, important: isImportant }
+        setTasks([...tasks,  newTask]);
+        localStorage.setItem("tasks" ,JSON.stringify([...tasks,  newTask]))
     }
     function removeTask(taskId) {
         setTasks(prev => {

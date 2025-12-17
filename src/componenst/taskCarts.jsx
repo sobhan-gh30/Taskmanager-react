@@ -1,4 +1,11 @@
+import {useEffect} from "react";
+
 export default function TaskCart({id,title, description, important, done, onRemove, taskDone }) {
+
+    useEffect(() => {
+        console.log(`Task Cart: ${title}`);
+    }, []);
+
     return (
         <div className="w-full h-fit mb-5 min-h-26 border border-zinc-200 rounded shadow-md flex flex-col md:flex-row p-4 gap-4">
 
