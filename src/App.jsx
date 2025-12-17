@@ -62,6 +62,11 @@ function App() {
                     </span>
                         </p>
                         <div className="mt-20 mb-2 flex items-center justify-end gap-5">
+                            <button onClick={() => {
+                                setTasks([]);
+                            }} className="p-2 border-2 border-red-600 bg-red-50 hover:bg-red-100 rounded text-red-600">
+                                پاک کردن همه
+                            </button>
                             <select onChange={() => {
                                 addFilter(document.getElementById("selectFilter").value)
                             }} id="selectFilter" className="py-1 px-3 bg-white rounded border-2">
