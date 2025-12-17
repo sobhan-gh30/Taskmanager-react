@@ -32,7 +32,7 @@ function App() {
     }
     function addTask(newTitle, newDescription, isImportant) {
         let newTask = { id: crypto.randomUUID() , title: newTitle, description: newDescription, done: false, important: isImportant }
-        setTasks([...tasks,  newTask]);
+        setTasks(prev => [...prev, newTask]);
     }
     function removeTask(taskId) {
         setTasks(prev => {
@@ -43,6 +43,9 @@ function App() {
         setTasks((perv)=>{
             return perv.map(item => {return  item.id === taskId ? {...item , done: true } : item; });
         });
+    }
+    function clearTasks() {
+        setTasks([]);
     }
         return (
             <>
@@ -62,14 +65,13 @@ function App() {
                     </span>
                         </p>
                         <div className="mt-20 mb-2 flex items-center justify-end gap-5">
-                            <button onClick={() => {
-                                setTasks([]);
-                            }} className="p-2 border-2 border-red-600 bg-red-50 hover:bg-red-100 rounded text-red-600">
+                            <button onClick={clearTasks}
+                             className="p-2 border-2 border-red-600 bg-red-50 hover:bg-red-100 rounded text-red-600">
                                 پاک کردن همه
                             </button>
-                            <select onChange={() => {
-                                addFilter(document.getElementById("selectFilter").value)
-                            }} id="selectFilter" className="py-1 px-3 bg-white rounded border-2">
+                            <select
+                                onChange={(e) => addFilter(e.target.value)}
+                                id="selectFilter" className="py-1 px-3 bg-white rounded border-2">
                                 <option value="all">نمایش همه</option>
                                 <option value="important">مهم ها</option>
                             </select>
